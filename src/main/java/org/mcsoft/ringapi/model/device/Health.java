@@ -1,0 +1,55 @@
+package org.mcsoft.ringapi.model.device;
+import lombok.Data;
+
+import java.util.List;
+@Data
+public class Health{
+    public String device_type;
+    public int last_update_time;
+    public boolean connected;
+    public boolean rss_connected;
+    public boolean vod_enabled;
+    public boolean sidewalk_connection;
+    public boolean floodlight_on;
+    public boolean white_led_on;
+    public boolean night_mode_on;
+    public boolean hatch_open;
+    public double packet_loss;
+    public String packet_loss_category;
+    public double rssi;
+    public double transformer_voltage;
+    public String transformer_voltage_category;
+    public boolean wifi_is_ring_network;
+    public String ota_status;
+    public int ext_power_state;
+    public String network_connection_value;
+    public int ac_power;
+    public boolean external_connection;
+    public int battery_percentage;
+    public String battery_percentage_category;
+    public double battery_voltage;
+    public String battery_voltage_category;
+    public String firmware_version;
+    public String rssi_category;
+    public String second_battery_percentage_category;
+    public String second_battery_voltage_category;
+    public boolean battery_save;
+    public String firmware_version_status;
+    public int stream_resolution;
+    public int bandwidth_last_time;
+    public int bandwidth;
+    public long status_time;
+    public String firmware_avg_bitrate;
+    public String video_packets_total;
+    public List<String> supported_rpc_commands;
+    public String pref_run_mode;
+    public String run_mode;
+    public boolean battery_present;
+    public double tx_rate;
+    public String channel;
+    public boolean siren_on;
+    public String rssi_risk_level;
+    public int uptime_sec;
+    public String stream_profile;
+    public String iperf_tcp_throughput;
+}

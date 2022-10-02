@@ -1,15 +1,19 @@
 package org.mcsoft.ringapi.model.device.ring;
 
 import lombok.Data;
-import org.mcsoft.ringapi.pojos.device.BaseDevice;
-import org.mcsoft.ringapi.pojos.device.Device;
+import lombok.ToString;
+import org.mcsoft.ringapi.model.device.BaseDevice;
+import org.mcsoft.ringapi.model.device.Device;
 
 @Data
-public class RingBaseDevice {
+@ToString
+public abstract class RingBaseDevice {
 
+    @ToString.Exclude
     private final Device deviceData;
     private int id;
     private RingKind deviceType;
+    public String locationId;
 
     public RingBaseDevice() {
         this.deviceData = null;
@@ -22,6 +26,7 @@ public class RingBaseDevice {
 
         this.id = ((BaseDevice)deviceData).getId();
         this.deviceType = ((BaseDevice)deviceData).getRingDeviceKind();
+        this.locationId = ((BaseDevice)deviceData).getLocation_id();
     }
 
     public RingKind getKind() {

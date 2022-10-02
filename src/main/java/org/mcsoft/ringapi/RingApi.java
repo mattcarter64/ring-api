@@ -3,12 +3,12 @@ package org.mcsoft.ringapi;
 import lombok.extern.slf4j.Slf4j;
 import org.mcsoft.ringapi.model.Location;
 import org.mcsoft.ringapi.model.auth.RefreshTokenAuth;
+import org.mcsoft.ringapi.model.device.Chime;
+import org.mcsoft.ringapi.model.device.Device;
 import org.mcsoft.ringapi.model.device.ring.RingCamera;
 import org.mcsoft.ringapi.model.device.ring.RingChime;
 import org.mcsoft.ringapi.model.response.DevicesResponse;
 import org.mcsoft.ringapi.model.response.RawLocationsResponse;
-import org.mcsoft.ringapi.pojos.device.Chime;
-import org.mcsoft.ringapi.pojos.device.Device;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -54,18 +54,22 @@ public class RingApi {
 
         List<RingChime> ringChimes = new ArrayList<>();
 
-        for(Chime chime: devices.getChimes()) {
-            ringChimes.add(new RingChime(chime));
+        for(Chime chimeData: devices.getChimes()) {
+            RingChime chime = new RingChime(chimeData);
+
+            if (chime.getLocationId().equalsIgnoreCase(location.getLocationDetails().getLocationId())) {
+                ringChimes.add(chime);
+            }
         }
 
         location.setChimes(ringChimes);
 
         List<RingCamera> ringCameras = new ArrayList<>();
 
-        for(Device camera: devices.getAllCameras()) {
-            RingCamera cam = new RingCamera(camera);
+        for(Device cameraData: devices.getAllCameras()) {
+            RingCamera cam = new RingCamera(cameraData);
 
-            if( cam.isCamera()) {
+            if( cam.isCamera() && cam.getLocationId().equalsIgnoreCase(location.getLocationDetails().getLocationId())) {
                 ringCameras.add(cam);
             }
         }

@@ -15,7 +15,7 @@ public class Main {
 
             List<Location> locations = restApi.getLocations();
 
-            log.info("Locations=" + locations);
+            log.info("Locations={}", locations);
 
 //            log.info("locations={}", restApi.fetchAndBuildLocations());
         }
